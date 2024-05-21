@@ -49,13 +49,20 @@ void printOptions() {
 	printf("2. Subtract\n");
 	printf("3. Multiply\n");
 }
-
+// modified the code to ensure that the user inputs valid double values
+// clears the input buffer if invalid characters are entered.
 void add() {
 	double num1, num2, result;
 	printf("Enter the first value:");
-	scanf_s("%lf", &num1);
+	while (scanf_s("%lf", &num1) != 1) {
+		printf("Invalid input. Please enter a valid input: ");
+		while (getchar() != '\n');
+	}
 	printf("Enter the second value:");
-	scanf_s("%lf", &num2);
+	while (scanf_s("%lf", &num2) != 1) {
+		printf("Invalid input. Please enter a valid input: ");
+		while (getchar() != '\n');
+	}
 	result = num1 + num2;
 	printf("%lf + %lf = %lf\n", num1, num2, result);
 }
